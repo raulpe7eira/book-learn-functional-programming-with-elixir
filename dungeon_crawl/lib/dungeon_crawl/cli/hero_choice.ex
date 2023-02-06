@@ -1,7 +1,7 @@
-defmodule DungeonCrawl.Cli.HeroChoice do
+defmodule DungeonCrawl.CLI.HeroChoice do
   alias Mix.Shell.IO, as: Shell
 
-  import DungeonCrawl.Cli.BaseCommands
+  import DungeonCrawl.CLI.BaseCommands
 
   def start do
     Shell.cmd("clear")

@@ -14,6 +14,6 @@ defmodule DungeonCrawl.CLI.Main do
   end
 
   defp hero_choice do
-    DungeonCrawl.Cli.HeroChoice.start()
+    DungeonCrawl.CLI.HeroChoice.start()
   end
 end

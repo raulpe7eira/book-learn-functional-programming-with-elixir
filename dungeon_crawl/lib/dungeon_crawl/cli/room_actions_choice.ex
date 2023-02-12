@@ -1,7 +1,7 @@
 defmodule DungeonCrawl.CLI.RoomActionsChoice do
-  alias Mix.Shell.IO, as: Shell
-
   import DungeonCrawl.CLI.BaseCommands
+
+  alias Mix.Shell.IO, as: Shell
 
   def start(room) do
     room_actions = room.actions
@@ -17,6 +17,6 @@ defmodule DungeonCrawl.CLI.RoomActionsChoice do
       |> parse_answer
       |> find_action_by_index.()
 
-    [room, chosen_action]
+    {room, chosen_action}
   end
 end

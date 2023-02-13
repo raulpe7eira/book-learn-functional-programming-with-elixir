@@ -1,4 +1,8 @@
 defmodule DungeonCrawl.CLI.BaseCommands do
+  use Monad.Operators
+
+  import Monad.Result, only: [success: 1, success?: 1, error: 1, return: 1]
+
   alias Mix.Shell.IO, as: Shell
 
   def display_options(options) do
@@ -8,7 +12,7 @@ defmodule DungeonCrawl.CLI.BaseCommands do
       Shell.info("#{index} - #{option}")
     end)
 
-    options
+    return(options)
   end
 
   def generate_question(options) do
@@ -18,8 +22,46 @@ defmodule DungeonCrawl.CLI.BaseCommands do
   end
 
   def parse_answer(answer) do
-    {option, _} = Integer.parse(answer)
+    case Integer.parse(answer) do
+      :error ->
+        error("Invalid option")
 
-    option - 1
+      {option, _} ->
+        success(option - 1)
+    end
+  end
+
+  def find_option_by_index(index, options) do
+    case Enum.at(options, index) do
+      nil ->
+        error("Invalid option")
+
+      chosen_option ->
+        success(chosen_option)
+    end
+  end
+
+  def ask_for_option(options) do
+    result =
+      return(options)
+      ~>> (&display_options/1)
+      ~>> (&generate_question/1)
+      ~>> (&Shell.prompt/1)
+      ~>> (&parse_answer/1)
+      ~>> (&find_option_by_index(&1, options))
+
+    if success?(result) do
+      result.value
+    else
+      display_error(result.error)
+      ask_for_option(options)
+    end
+  end
+
+  def display_error(message) do
+    Shell.cmd("clear")
+    Shell.error(message)
+    Shell.prompt("Press Enter to continue.")
+    Shell.cmd("clear")
   end
 end

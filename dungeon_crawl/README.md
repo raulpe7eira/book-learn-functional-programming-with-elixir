@@ -1,6 +1,16 @@
 # DungeonCrawl
 
-**TODO: Add description**
+> The project simulates a game.
+
+## Gets dependencies and starts application
+
+```bash
+cd dungeon_crawl
+mix deps.get
+mix start
+```
+
+---
 
 ## Installation
 

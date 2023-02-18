@@ -6,7 +6,7 @@ This repository contains the code used by the [Learn Functional Programming with
 
 ## Apps
 
-### [Dungeon Crawl](dungeon_crawl/README.md)
+### [DungeonCrawl](dungeon_crawl/README.md)
 
 > The app w/o phoenix.
 

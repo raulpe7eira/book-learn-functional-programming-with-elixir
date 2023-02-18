@@ -10,6 +10,14 @@ mix deps.get
 mix start
 ```
 
+# Other implementations to do the same
+
+- [x] [Controlling the flow of impure functions](https://github.com/raulpe7eira/book-learn-functional-programming-with-elixir/tree/controlling-the-flow-of-impure-functions)
+
+- [x] [Handling impure functions with the error monad](https://github.com/raulpe7eira/book-learn-functional-programming-with-elixir/tree/handling-impure-functions-with-the-error-monad)
+
+- [x] [Trying rescuing and catching](https://github.com/raulpe7eira/book-learn-functional-programming-with-elixir/tree/trying-rescuing-and-catching)
+
 ---
 
 ## Installation
